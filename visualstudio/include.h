@@ -1,0 +1,31 @@
+#include <iostream>
+#include <stdio.h>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <limits>
+
+#include <algorithm>
+#include <iostream>
+#include <list>
+#include <numeric>
+#include <random>
+#include <vector>
+#include <numeric>
+#include <ctime>
+#include <cmath>
+#include <ctime>
+#include <functional>
+#include <fstream>
+#include <memory>
+#include <mutex>
+#include <thread>
+#include <deque>
+#include <list>
+#include <forward_list>
+#include <set>
+#include <map>
+#include <stack>
+#include <queue>
+using namespace std;

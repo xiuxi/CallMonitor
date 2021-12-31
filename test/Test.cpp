@@ -7,8 +7,9 @@ void test() {
     // cout << "hello 11\n";
 }
 
-void main(int argc,char *argv[])
+int main(int argc,char *argv[])
 {
     test();
-
+	
+	return 0;
 }

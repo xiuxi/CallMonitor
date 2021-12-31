@@ -1,0 +1,4 @@
+D:\software\vs_2019\Community\VC\Auxiliary\Build\vcvars32.bat
+cl test.cpp
+
+https://code.visualstudio.com/docs/cpp/config-msvc

@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/19822603/is-there-a-way-to-get-the-build-command-line-used-by-visual-studio

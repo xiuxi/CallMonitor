@@ -1,3 +1,4 @@
+.vs
 Debug
 # Prerequisites
 *.d
@@ -38,3 +39,6 @@ build/*
 
 # Project specific
 src/gccdump.s
+.vs/
+.vs/CallMon/v16/.suo
+Debug/

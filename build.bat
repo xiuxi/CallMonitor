@@ -4,4 +4,5 @@ rem nmake.exe /debug /fCallMon.mak CFG="CallMon - Win32 Debug"
 rem cd Test
 rem nmake.exe /debug /fTest.mak CFG="Test - Win32 Debug"
 rem cd ..
+cls
 Debug\Test.exe

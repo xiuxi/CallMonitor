@@ -243,20 +243,27 @@ void CallMonitor::logEntry(CallInfo &ci)
     indent(callInfoStack.size()-1);
     string module,name;
     getFuncInfo(ci.funcAddr,module,name);
+    printf("%s \n",
+        name.c_str());
+    /*
     printf("%s!%s (%08X)\n",module.c_str(),
             name.c_str(),ci.funcAddr);
+    */
 }
 
 // Default exit logging procedure
 void CallMonitor::logExit(CallInfo &ci,bool normalRet)
 {
+    //xiuxi
     indent(callInfoStack.size()-1);
     if (!normalRet) printf("exception ");
     TICKS ticksPerSecond;
     queryTickFreq(&ticksPerSecond);
+    /*
     printf("exit %08X, elapsed time=%I64d ms (%I64d ticks)\n",ci.funcAddr,
            (ci.endTime-ci.startTime)/(ticksPerSecond/1000),
            (ci.endTime-ci.startTime));
+    */
 }
 
 void DumpLastError()

@@ -1,0 +1,9 @@
+﻿  CallMon.cpp
+D:\gitHub\CallMonitor\CallMon.cpp(146,29): warning C4244: “=”: 从“long double”转换到“CallMonitor::TICKS”，可能丢失数据
+D:\gitHub\CallMonitor\CallMon.cpp(324,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\gitHub\CallMonitor\CallMon.cpp(339,13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\gitHub\CallMonitor\CallMon.cpp(296,5): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  DllMain.cpp
+  正在生成代码...
+    正在创建库 .\Release\CallMon.lib 和对象 .\Release\CallMon.exp
+  CallMon.vcxproj -> D:\gitHub\CallMonitor\Release\CallMon.dll

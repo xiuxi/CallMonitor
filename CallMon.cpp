@@ -5,6 +5,8 @@
 #include <windows.h>
 #include <imagehlp.h>
 #include <stdio.h>
+#include <regex>
+#include <iostream>
 #include "CallMon.h"
 
 using namespace std;
@@ -158,7 +160,13 @@ void CallMonitor::queryTickFreq(TICKS *t)
 // Utility functions
 void indent(int level) 
 {
-    for(int i=0;i<level;i++) putchar('\t');
+    for (int i = 0; i < level; i++) { 
+        //putchar('\t'); //xiuxi
+        putchar(' ');
+        putchar(' ');
+        putchar(' ');
+        putchar(' ');
+    }
 }
 
 //
@@ -237,33 +245,87 @@ void CallMonitor::exitProcedure(ADDR parentFramePtr,
     }
 }
 
+int time_end_id = 1;
+int callInfoStack_enter;
 // Default entry logging procedure
+string get_indent(int level) {
+    string text = "";
+    for (int i = 0; i < level; i++) {
+        //putchar('\t'); //xiuxi
+        text += "    ";
+    }
+    return text;
+}
 void CallMonitor::logEntry(CallInfo &ci)
 {
-    indent(callInfoStack.size()-1);
+
+
     string module,name;
     getFuncInfo(ci.funcAddr,module,name);
-    printf("%s \n",
-        name.c_str());
+    string name1 = std::regex_replace(name, std::regex("std::"), "");
+    if (name1.length() != name.length()) {
+        return;
+    }
+    name = std::regex_replace(name, std::regex("::"), ".");
+    name = std::regex_replace(name, std::regex("> >"), ">>");
+    name = std::regex_replace(name, std::regex("<"), "(");
+    name = std::regex_replace(name, std::regex(">"), ")");
+    
+    if (1 != 1) {
+        return;
+    }
+    string indent1 = get_indent(callInfoStack.size());
+    //printf("//%s", indent1.c_str());
+    std::cout << "//" << indent1;
+    //string indent1 = get_indent(callInfoStack.size());
+    //callInfoStack_enter = callInfoStack.size();
+    //indent(callInfoStack.size() - 1);
+    //printf("{\n");
+    //indent(callInfoStack.size() );
+
+    std::cout << name << time_end_id << "\n";
+    //printf("%s { // %d \n",
+    //    name.c_str(), time_end_id);
+    time_end_id++;
     /*
     printf("%s!%s (%08X)\n",module.c_str(),
             name.c_str(),ci.funcAddr);
     */
 }
-
 // Default exit logging procedure
 void CallMonitor::logExit(CallInfo &ci,bool normalRet)
 {
+    if (1==1) {
+        return;
+    }
+    auto callInfoStack_exit = callInfoStack.size();
     //xiuxi
     indent(callInfoStack.size()-1);
     if (!normalRet) printf("exception ");
     TICKS ticksPerSecond;
     queryTickFreq(&ticksPerSecond);
+    string module, name;
+    getFuncInfo(ci.funcAddr, module, name);
+    //printf("}");
+    //printf("}");
+    //printf("enter=%d exit=%d", callInfoStack_enter, callInfoStack_exit);
+    name = std::regex_replace(name, std::regex("std::"), "");
+    /**/
+    name = std::regex_replace(name, std::regex("::"), ".");
+    name = std::regex_replace(name, std::regex("> >"), ">>");
+    name = std::regex_replace(name, std::regex("<"), "(");
+    name = std::regex_replace(name, std::regex(">"), ")");
     /*
+    printf(name.c_str());
+    printf(" %d ",time_end_id);
+    time_end_id++;
+    printf("\n\n");
+    
     printf("exit %08X, elapsed time=%I64d ms (%I64d ticks)\n",ci.funcAddr,
            (ci.endTime-ci.startTime)/(ticksPerSecond/1000),
            (ci.endTime-ci.startTime));
     */
+    
 }
 
 void DumpLastError()

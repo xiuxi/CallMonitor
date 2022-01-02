@@ -1,3 +1,7 @@
+http://www.johnpanzer.com/aci_cuj/
+http://www.johnpanzer.com/aci_cuj/aci_src.zip
+
+
 D:\gitHub\CallMonitor_windows_cpp_call_stack_zip\source
 
 # Automatic Code Instrumentation by John Panzer

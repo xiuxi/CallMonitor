@@ -248,42 +248,106 @@ void CallMonitor::exitProcedure(ADDR parentFramePtr,
 int time_end_id = 1;
 int callInfoStack_enter;
 // Default entry logging procedure
-string get_indent(int level) {
+string get_indent(int level, bool is_std) {
     string text = "";
     for (int i = 0; i < level; i++) {
         //putchar('\t'); //xiuxi
-        text += "    ";
+        if (is_std) {
+            text += "    ";
+        }
+        else {
+            text += "____";
+        }
+        
     }
     return text;
 }
 void CallMonitor::logEntry(CallInfo &ci)
 {
-
-
+    int maxLength1 = 90;
     string module,name;
     getFuncInfo(ci.funcAddr,module,name);
+    bool is_std = false;
     string name1 = std::regex_replace(name, std::regex("std::"), "");
     if (name1.length() != name.length()) {
-        return;
+        is_std = true;
+        //return;
+
     }
+    name = name1;
     name = std::regex_replace(name, std::regex("::"), ".");
     name = std::regex_replace(name, std::regex("> >"), ">>");
     name = std::regex_replace(name, std::regex("<"), "(");
     name = std::regex_replace(name, std::regex(">"), ")");
+    if (is_std && true) {
+        auto fnd = name.find('(');
+        if (fnd >= 0) {
+            if (1 != 1) {
+                //max 显示完整调用
+                //max(basic_string(char,char_traits(char),allocator(char)) ) 
+                name = name.substr(0, fnd);
+            }
+        }
+    }
+    if (is_std && false) {
+        name = std::regex_replace(name, std::regex("\\("), " ");
+        name = std::regex_replace(name, std::regex("\\)"), " ");
+        name = std::regex_replace(name, std::regex("\\."), " ");
+        name = std::regex_replace(name, std::regex("\\,"), " ");
+        name = std::regex_replace(name, std::regex("  "), " ");
+        name = std::regex_replace(name, std::regex("  "), " ");
+        name = std::regex_replace(name, std::regex("  "), " ");
+        //name = "__" + name;
+    }
+
+    if (!is_std) {
+        //name = "__" + name;
+        int length = name.length();
+        if (length + callInfoStack.size()*4 < maxLength1) {
+            length = maxLength1 - length - callInfoStack.size()*4;
+            for (int i = 0; i < length; i++) {
+                name += "_";
+            }
+        }
+    }
+    if (is_std) {
+        if (name == "basic_ostream" || 
+            name == "endl" ||
+            name == "operator" ||
+            name == "_Narrow_char_traits"
+            ) {
+            cout << flush;
+            cout << "\n";
+            int j = 0;
+            //return;
+        }
+        //return;
+    }
     
     if (1 != 1) {
         return;
     }
-    string indent1 = get_indent(callInfoStack.size());
+    if (!is_std) {
+        cout << "\n";
+    }
+    string indent1 = get_indent(callInfoStack.size(), is_std);
     //printf("//%s", indent1.c_str());
-    std::cout << "//" << indent1;
+    std::cout << "                    //" << indent1;
     //string indent1 = get_indent(callInfoStack.size());
     //callInfoStack_enter = callInfoStack.size();
     //indent(callInfoStack.size() - 1);
     //printf("{\n");
     //indent(callInfoStack.size() );
-
+    if (name.length() + indent1.length() < 100) {
+        int len = maxLength1 - name.length() - indent1.length();
+        for (int i = 0; i < len; i++) {
+            name += " ";
+        }
+    }
     std::cout << name << time_end_id << "\n";
+    if (!is_std) {
+        cout << "\n";
+    }
     //printf("%s { // %d \n",
     //    name.c_str(), time_end_id);
     time_end_id++;

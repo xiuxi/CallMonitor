@@ -1,58 +1,44 @@
-﻿#include "include.h"
-using namespace std;
+﻿//#include "test.cpp"
+//#include "D:\gitHub\houjie_cpp_std_library_memory\code_stl\03_1\main.cpp"
 
-long get_a_target_long()
-{
-	long target = 0;
+//#include "D:\gitHub\houjie_cpp_std_library_memory\code_memory\03_1\main.cpp"
 
-	cout << "target (0~" << RAND_MAX << "): ";
-	cin >> target;
-	return target;
-}
+//#include "D:\gitHub\houjie_cpp_std_library_memory\code_all\16  vector深度探索-1fqbTICmqxM_1\main.cpp"
 
-int compareLongs(const void* a, const void* b)
-{
-	return (*(long*)a - *(long*)b);
-}
+//#include "D:\gitHub\Derek_Banas_cplus_plus_tutorial_PLGLfVvz_code_LVvQ9S8YSV0iDsuEU8v11yP9M\code\01\main.cpp"
 
-const long ASIZE = 2;
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\16  vector深度探索-1fqbTICmqxM_1\main.cpp"
 
-//---------------------------------------------------
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\9  OOP 面向对象编程 vs  GP 泛型编程）-h9Xxszvvh2Y\main.cpp"
 
-namespace jj01
-{
-	void test_array()
-	{
-		cout << "\ntest_array().......... \n";
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\9 重载-rLwuavlBRk8\main.cpp"
 
-		array<long, ASIZE> c;
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\9 重载-rLwuavlBRk8_2\main.cpp"
 
-		clock_t timeStart = clock();
-		for (long i = 0; i < ASIZE; ++i) {
-			c[i] = rand();
-		}
-		cout << "milli-seconds : " << (clock() - timeStart) << endl;	//
-		cout << "array.size()= " << c.size() << endl;
-		cout << "array.front()= " << c.front() << endl;
-		cout << "array.back()= " << c.back() << endl;
-		cout << "array.data()= " << c.data() << endl;
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\11  分配器-84U1Pkegm-M\main.cpp"
 
-		long target = get_a_target_long();
+//#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\11 重载示例（下）-M9yUMcdtwTA\main.cpp"
 
-		timeStart = clock();
-		::qsort(c.data(), ASIZE, sizeof(long), compareLongs);
-		long* pItem = (long*)::bsearch(&target, (c.data()), ASIZE, sizeof(long), compareLongs);
-		cout << "qsort()+bsearch(), milli-seconds : " << (clock() - timeStart) << endl;	//    
-		if (pItem != NULL)
-			cout << "found, " << *pItem << endl;
-		else
-			cout << "not found! " << endl;
-	}
-}
+//#include "D:\gitHub\Derek_Banas_cplus_plus_tutorial_PLGLfVvz_code_LVvQ9S8YSV0iDsuEU8v11yP9M\code\02\1.cpp"
 
-int main()
-{
-	jj01::test_array();
-	return 0;
-}
+//#include "D:\gitHub\Derek_Banas_cplus_plus_tutorial_PLGLfVvz_code_LVvQ9S8YSV0iDsuEU8v11yP9M\code\02\2.cpp"
+
+//#include "D:\gitHub\Derek_Banas_cplus_plus_tutorial_PLGLfVvz_code_LVvQ9S8YSV0iDsuEU8v11yP9M\code\02\3.cpp"
+
+//#include "D:\gitHub\java_ubuntu_windows\c++\cpp-primer-5th-edition\src\chapter02\2_4.cc"
+
+//#include "D:\gitHub\java_ubuntu_windows\c++\cpp-primer-5th-edition\src\chapter03\3_2.cc"
+
+//#include "D:\gitHub\java_ubuntu_windows\c++\cpp-primer-5th-edition\src\chapter03\3_10.cc"
+
+
+#include "D:\gitHub\java_ubuntu_windows\c++\houjie_cpp_std_library_memory\code_all\11 重载示例（下）-M9yUMcdtwTA_2\main.cpp"
+
+
+
+
+
+
+
+
 

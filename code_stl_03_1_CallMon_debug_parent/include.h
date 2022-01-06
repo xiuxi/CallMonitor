@@ -27,5 +27,5 @@
 #include <iostream>
 #include <ctime> 
 #include <cstdlib> //qsort, bsearch, NULL
-
+#include <array>
 using namespace std;
